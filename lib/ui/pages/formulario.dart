@@ -20,13 +20,13 @@ class FormularioPage extends ConsumerWidget {
             TextFormField(
               onChanged: (value) =>
                   ref.read(formProvider.notifier).updateName(value),
-              decoration: const InputDecoration(labelText: 'Nombre'),
+              decoration: const InputDecoration(labelText: 'Name'),
             ),
             const SizedBox(height: 20),
             TextFormField(
               onChanged: (value) =>
                   ref.read(formProvider.notifier).updateLastName(value),
-              decoration: const InputDecoration(labelText: 'Apellido'),
+              decoration: const InputDecoration(labelText: 'Lastname'),
             ),
             const SizedBox(height: 20),
             const Calendar(),
@@ -34,7 +34,7 @@ class FormularioPage extends ConsumerWidget {
             TextFormField(
               onChanged: (value) =>
                   ref.read(formProvider.notifier).addAddress(value),
-              decoration: const InputDecoration(labelText: 'Dirección'),
+              decoration: const InputDecoration(labelText: 'Address'),
             ),
             const SizedBox(height: 20),
             ElevatedButton(
