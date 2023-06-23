@@ -9,7 +9,7 @@ class ListUsersWidget extends StatelessWidget {
     required this.listViewUsers,
   });
 
-  final List<User> listViewUsers;
+  final List<UserModel> listViewUsers;
 
   @override
   Widget build(BuildContext context) {

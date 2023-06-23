@@ -6,5 +6,5 @@ class GetUserDataUseCase {
 
   GetUserDataUseCase(this.getuserDataGateway);
 
-  Future<FormularioModel> getUserData() => getuserDataGateway.getUserData();
+  Future<UserModel> getUserData() => getuserDataGateway.getUserData();
 }

@@ -8,7 +8,7 @@ class cardDetailListUser extends StatelessWidget {
     required this.user,
   });
 
-  final User user;
+  final UserModel user;
 
   @override
   Widget build(BuildContext context) {
@@ -34,19 +34,19 @@ class cardDetailListUser extends StatelessWidget {
 
   Expanded infoUser() {
     return Expanded(
-            child: Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(12, 0, 12, 0),
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(user.name),
-                  Text(user.lastName),
-                  Text(user.id.toString()),
-                ],
-              ),
-            ),
-          );
+      child: Padding(
+        padding: const EdgeInsetsDirectional.fromSTEB(12, 0, 12, 0),
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(user.name),
+            Text(user.lastName),
+            Text(user.id.toString()),
+          ],
+        ),
+      ),
+    );
   }
 }

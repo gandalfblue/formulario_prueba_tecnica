@@ -13,15 +13,15 @@ class ListUserPage extends StatefulWidget {
 }
 
 class _ListUserWidgetState extends State<ListUserPage> {
-  StreamController<List<User>>? miStreamController = StreamController();
+  StreamController<List<UserModel>>? miStreamController = StreamController();
 
-  late List<User> listUsers;
+  late List<UserModel> listUsers;
 
   @override
   void initState() {
     super.initState();
     listUsers = [
-      User(
+      UserModel(
           name: 'name',
           lastName: 'lastName',
           id: 1000010000,
@@ -29,7 +29,7 @@ class _ListUserWidgetState extends State<ListUserPage> {
           personProfilePhoto:
               'https://cdn.pixabay.com/photo/2018/01/06/09/25/hijab-3064633_1280.jpg',
           address: ['address', 'address']),
-      User(
+      UserModel(
           name: 'name',
           lastName: 'lastName',
           id: 1000010001,
@@ -37,7 +37,7 @@ class _ListUserWidgetState extends State<ListUserPage> {
           personProfilePhoto:
               'https://cdn.pixabay.com/photo/2016/03/23/04/01/woman-1274056_1280.jpg',
           address: ['address', 'address']),
-      User(
+      UserModel(
           name: 'name',
           lastName: 'lastName',
           id: 1000010002,
@@ -45,7 +45,7 @@ class _ListUserWidgetState extends State<ListUserPage> {
           personProfilePhoto:
               'https://cdn.pixabay.com/photo/2017/05/13/12/40/fashion-2309519_1280.jpg',
           address: ['address', 'address']),
-      User(
+      UserModel(
           name: 'name',
           lastName: 'lastName',
           id: 1000010004,
@@ -53,7 +53,7 @@ class _ListUserWidgetState extends State<ListUserPage> {
           personProfilePhoto:
               'https://cdn.pixabay.com/photo/2023/06/03/18/12/benz-8038240_1280.jpg',
           address: ['address', 'address']),
-      User(
+      UserModel(
           name: 'name',
           lastName: 'lastName',
           id: 1000010003,
@@ -61,14 +61,14 @@ class _ListUserWidgetState extends State<ListUserPage> {
           personProfilePhoto:
               'https://cdn.pixabay.com/photo/2023/05/09/07/18/space-7980556_1280.jpg',
           address: ['address', 'address']),
-      User(
+      UserModel(
           name: 'name',
           lastName: 'lastName',
           id: 1000010004,
           birthdate: DateTime.now(),
           //personProfilePhoto:'https://cdn.pixabay.com/photo/2023/06/03/18/12/benz-8038240_1280.jpg',
           address: ['address', 'address']),
-      User(
+      UserModel(
           name: 'name',
           lastName: 'lastName',
           id: 1000010000,
@@ -76,7 +76,7 @@ class _ListUserWidgetState extends State<ListUserPage> {
           personProfilePhoto:
               'https://cdn.pixabay.com/photo/2018/01/06/09/25/hijab-3064633_1280.jpg',
           address: ['address', 'address']),
-      User(
+      UserModel(
           name: 'name',
           lastName: 'lastName',
           id: 1000010001,
@@ -84,7 +84,7 @@ class _ListUserWidgetState extends State<ListUserPage> {
           personProfilePhoto:
               'https://cdn.pixabay.com/photo/2016/03/23/04/01/woman-1274056_1280.jpg',
           address: ['address', 'address']),
-      User(
+      UserModel(
           name: 'name',
           lastName: 'lastName',
           id: 1000010004,
@@ -92,7 +92,7 @@ class _ListUserWidgetState extends State<ListUserPage> {
           personProfilePhoto:
               'https://cdn.pixabay.com/photo/2023/06/03/18/12/benz-8038240_1280.jpg',
           address: ['address', 'address']),
-      User(
+      UserModel(
           name: 'name',
           lastName: 'lastName',
           id: 1000010002,
@@ -100,7 +100,7 @@ class _ListUserWidgetState extends State<ListUserPage> {
           personProfilePhoto:
               'https://cdn.pixabay.com/photo/2017/05/13/12/40/fashion-2309519_1280.jpg',
           address: ['address', 'address']),
-      User(
+      UserModel(
           name: 'name',
           lastName: 'lastName',
           id: 1000010003,
@@ -108,7 +108,7 @@ class _ListUserWidgetState extends State<ListUserPage> {
           personProfilePhoto:
               'https://cdn.pixabay.com/photo/2023/05/09/07/18/space-7980556_1280.jpg',
           address: ['address', 'address']),
-      User(
+      UserModel(
           name: 'name',
           lastName: 'lastName',
           id: 1000010004,
@@ -133,7 +133,7 @@ class _ListUserWidgetState extends State<ListUserPage> {
         appBar: costomAppBar(context),
         body: SafeArea(
           top: true,
-          child: StreamBuilder<List<User>>(
+          child: StreamBuilder<List<UserModel>>(
             stream: miStreamController!.stream,
             initialData: listUsers,
             builder: (context, snapshot) {
@@ -146,7 +146,7 @@ class _ListUserWidgetState extends State<ListUserPage> {
                   ),
                 );
               }
-              List<User> listViewUsers = snapshot.data!;
+              List<UserModel> listViewUsers = snapshot.data!;
               return ListUsersWidget(listViewUsers: listViewUsers);
             },
           ),
