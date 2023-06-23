@@ -25,7 +25,7 @@ class CreateUserDataApi extends CreateUserDataGateway {
       return;
     } else {
       final decodeData = json.decode(response.body);
-      throw UserDataApiError(decodeData['error']['message']);
+      throw UserDataApiError(decodeData['error']);
     }
   }
 

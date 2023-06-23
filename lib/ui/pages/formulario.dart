@@ -2,12 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:formulario_prueba_tecnica/config/providers/create_user_data_provider.dart';
-import 'package:formulario_prueba_tecnica/dominio/models/user.dart';
 import 'package:formulario_prueba_tecnica/ui/widgets/calendar.dart';
 
 class FormularioPage extends ConsumerWidget {
-  late UserModel userModel;
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
@@ -31,11 +28,7 @@ class FormularioPage extends ConsumerWidget {
               decoration: const InputDecoration(labelText: 'Lastname'),
             ),
             const SizedBox(height: 20),
-            TextFormField(
-              onChanged: (value) =>
-                  ref.read(formProvider.notifier).updateId(value),
-              decoration: const InputDecoration(labelText: 'DNI'),
-            ),
+            const Calendar(),
             const SizedBox(height: 20),
             TextFormField(
               onChanged: (value) =>
@@ -43,16 +36,14 @@ class FormularioPage extends ConsumerWidget {
               decoration: const InputDecoration(labelText: 'Address'),
             ),
             const SizedBox(height: 20),
-            const Calendar(),
-            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
                 // Acción a realizar cuando se presione el botón de enviar.
                 // Puedes acceder al estado actual del formulario utilizando `watch`.
-                ref.read(formProvider.notifier).submitForm();
+                final currentForm = ref.watch(createUserDataProvider);
                 // Realiza acciones adicionales, como enviar los datos al servidor.
               },
-              child: const Text('Enviar'),
+              child: Text('Enviar'),
             ),
           ],
         ),

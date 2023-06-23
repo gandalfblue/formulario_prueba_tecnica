@@ -8,11 +8,7 @@ class FormControllerUseCase extends StateNotifier<UserModel> {
 
   FormControllerUseCase(this._createUserDataGateway)
       : super(UserModel(
-            id: '1015',
-            name: '',
-            lastName: '',
-            birthdate: DateTime.now(),
-            address: []));
+            id: '', name: '', lastName: '', birthdate: '', address: []));
 
   void updateName(String value) {
     state = state.copyWith(name: value);
@@ -22,7 +18,11 @@ class FormControllerUseCase extends StateNotifier<UserModel> {
     state = state.copyWith(lastName: value);
   }
 
-  void updateBirthdate(DateTime value) {
+  void updateId(String value) {
+    state = state.copyWith(id: value);
+  }
+
+  void updateBirthdate(String value) {
     state = state.copyWith(birthdate: value);
   }
 

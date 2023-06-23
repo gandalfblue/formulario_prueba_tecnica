@@ -11,7 +11,8 @@ import 'package:formulario_prueba_tecnica/dominio/models/gateway/get_user_gatewa
 
 class GetUserDataApi extends GetUserDataGateway {
   @override
-  Future<UserModel> getUserData() async {
+  Future<List<UserModel>> getUserData() async {
+    final List<UserModel> userModels = [];
     AuthUserFirebaseApi.signInWithEmailAndPassword();
     const storage = FlutterSecureStorage();
 
@@ -23,7 +24,8 @@ class GetUserDataApi extends GetUserDataGateway {
 
     if (response.statusCode == 200) {
       UserModel userData = UserModel.fromJson(response.body);
-      return userData;
+      userModels.add(userData);
+      return userModels;
     } else {
       final decodeData = json.decode(response.body);
       throw UserDataApiError(decodeData['error']['message']);

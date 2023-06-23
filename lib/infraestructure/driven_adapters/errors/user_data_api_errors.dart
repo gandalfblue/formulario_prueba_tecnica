@@ -7,7 +7,10 @@ class UserDataApiError implements Exception {
 
   factory UserDataApiError.fromFirebaseAuthException(
       FirebaseException exception) {
+    print(exception.code);
     switch (exception.code) {
+      case "permission-denied":
+        return UserDataApiError("Permission denied.");
       case "object-not-found":
         return UserDataApiError("Data not found.");
       case "unauthenticated":
