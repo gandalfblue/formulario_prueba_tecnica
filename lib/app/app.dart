@@ -8,6 +8,7 @@ import 'package:formulario_prueba_tecnica/ui/pages/home_page.dart';
 import 'package:formulario_prueba_tecnica/ui/pages/list_user_page.dart';
 import 'package:formulario_prueba_tecnica/ui/pages/user_data_page.dart';
 
+
 class FormularioPruebaTecnicaFlutterApp extends ConsumerWidget {
   const FormularioPruebaTecnicaFlutterApp({super.key});
 
@@ -20,13 +21,14 @@ class FormularioPruebaTecnicaFlutterApp extends ConsumerWidget {
       initialRoute: AppRoutes.listuserPage,
       onGenerateRoute: (routeSetting) {
         switch (routeSetting.name) {
-          case (AppRoutes.home):
-            return MaterialPageRoute(builder: ((context) => UserDataPage()));
           case (AppRoutes.formulario):
             return MaterialPageRoute(builder: ((context) => FormularioPage()));
-          case (AppRoutes.listuserPage):
+          case (AppRoutes.listUserPage):
             return MaterialPageRoute(
                 builder: ((context) => const ListUserPage()));
+          case (AppRoutes.userData):
+            return MaterialPageRoute(
+                builder: ((context) => UserDataDetailsPage()));
           default:
             return MaterialPageRoute(builder: ((context) => const HomePage()));
         }
