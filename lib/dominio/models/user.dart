@@ -6,6 +6,7 @@ class FormularioModel {
   int id;
   DateTime birthdate;
   List<String> address;
+  String? personProfilePhoto;
 
   FormularioModel({
     required this.name,
@@ -13,6 +14,7 @@ class FormularioModel {
     required this.id,
     required this.birthdate,
     required this.address,
+    this.personProfilePhoto,
   });
 
   FormularioModel copyWith({
