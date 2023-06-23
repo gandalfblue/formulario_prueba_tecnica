@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:formulario_prueba_tecnica/dominio/models/user.dart';
-import 'package:formulario_prueba_tecnica/ui/Widget/round_image.dart';
+import 'package:formulario_prueba_tecnica/ui/widgets/round_image.dart';
 
 class cardDetailListUser extends StatelessWidget {
   const cardDetailListUser({

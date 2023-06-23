@@ -4,7 +4,7 @@ class UserModel {
   String name;
   String lastName;
   String? id;
-  DateTime birthdate;
+  String birthdate;
   List<String> address;
   String? personProfilePhoto;
 
@@ -21,7 +21,7 @@ class UserModel {
     String? name,
     String? lastName,
     String? id,
-    DateTime? birthdate,
+    String? birthdate,
     List<String>? address,
   }) =>
       UserModel(
@@ -40,7 +40,7 @@ class UserModel {
         name: json["name"],
         lastName: json["lastName"],
         id: json["id"],
-        birthdate: DateTime.parse(json["birthdate"]),
+        birthdate: json["birthdate"],
         address: List<String>.from(json["address"].map((x) => x)),
       );
 
@@ -48,8 +48,7 @@ class UserModel {
         "name": name,
         "lastName": lastName,
         "id": id,
-        "birthdate":
-            "${birthdate.year.toString().padLeft(4, '0')}-${birthdate.month.toString().padLeft(2, '0')}-${birthdate.day.toString().padLeft(2, '0')}",
+        "birthdate": birthdate,
         "address": List<dynamic>.from(address.map((x) => x)),
       };
 }

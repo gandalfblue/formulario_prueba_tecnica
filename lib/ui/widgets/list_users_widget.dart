@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:formulario_prueba_tecnica/config/routes/app_routes.dart';
 import 'package:formulario_prueba_tecnica/dominio/models/user.dart';
-import 'package:formulario_prueba_tecnica/ui/Widget/card_detail_list_user.dart';
+import 'package:formulario_prueba_tecnica/ui/widgets/card_detail_list_user.dart';
 
 class ListUsersWidget extends StatelessWidget {
   const ListUsersWidget({

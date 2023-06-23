@@ -6,7 +6,7 @@ import 'package:formulario_prueba_tecnica/dominio/usecases/validate_form_control
 import 'package:formulario_prueba_tecnica/infraestructure/driven_adapters/create_user_data_api.dart';
 
 final formProvider = StateNotifierProvider<FormControllerUseCase, UserModel>(
-  (ref) => FormControllerUseCase(ref.read(createUserDataProvider)),
+  (ref) => FormControllerUseCase(ref.watch(createUserDataProvider)),
 );
 
 final createUserDataProvider = Provider<CreateUserDataGateway>(
