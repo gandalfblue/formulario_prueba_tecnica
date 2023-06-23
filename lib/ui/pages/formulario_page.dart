@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:formulario_prueba_tecnica/config/providers/create_user_data_provider.dart';
+import 'package:formulario_prueba_tecnica/dominio/models/user.dart';
 import 'package:formulario_prueba_tecnica/ui/widgets/calendar.dart';
 
 class FormularioPage extends ConsumerWidget {

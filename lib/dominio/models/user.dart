@@ -6,6 +6,7 @@ class UserModel {
   int? id;
   DateTime birthdate;
   List<String> address;
+  String? personProfilePhoto;
 
   UserModel({
     required this.name,
@@ -13,6 +14,7 @@ class UserModel {
     this.id,
     required this.birthdate,
     required this.address,
+    this.personProfilePhoto,
   });
 
   UserModel copyWith({
