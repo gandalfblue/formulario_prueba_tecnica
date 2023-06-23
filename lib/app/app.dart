@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:formulario_prueba_tecnica/config/providers/create_user_data_provider.dart';
 
 import 'package:formulario_prueba_tecnica/config/routes/app_routes.dart';
 
@@ -26,7 +27,7 @@ class FormularioPruebaTecnicaFlutterApp extends ConsumerWidget {
             return MaterialPageRoute(
                 builder: ((context) => UserDataDetailsPage()));
           default:
-            return MaterialPageRoute(builder: ((context) => const HomePage()));
+            return MaterialPageRoute(builder: ((context) => FormularioPage()));
         }
       },
     );

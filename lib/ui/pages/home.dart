@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:formulario_prueba_tecnica/ui/widgets/custom_button_navigation_bar.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -8,7 +9,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('Marvel application'),
+        title: const Text('Home application'),
         elevation: 0,
         actions: [],
       ),
@@ -18,6 +19,7 @@ class HomePage extends StatelessWidget {
           height: 100,
         ),
       ),
+      bottomNavigationBar: CustomNavigationBar(),
     );
   }
 }

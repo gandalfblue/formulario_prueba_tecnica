@@ -10,20 +10,19 @@ import 'package:formulario_prueba_tecnica/dominio/models/user.dart';
 import 'package:formulario_prueba_tecnica/dominio/models/gateway/get_user_gateway.dart';
 
 class GetUserDataApi extends GetUserDataGateway {
-  final _storage = const FlutterSecureStorage();
-
   @override
-  Future<FormularioModel> getUserData() async {
+  Future<UserModel> getUserData() async {
     AuthUserFirebaseApi.signInWithEmailAndPassword();
+    const storage = FlutterSecureStorage();
 
-    String token = await _storage.read(key: 'token') ?? '';
+    String token = await storage.read(key: 'token') ?? '';
 
     final url =
         Uri.https(Enviroment.baseUrl, 'userdata/$token.json', {'auth': token});
     final response = await http.get(url);
 
     if (response.statusCode == 200) {
-      FormularioModel userData = FormularioModel.fromJson(response.body);
+      UserModel userData = UserModel.fromJson(response.body);
       return userData;
     } else {
       final decodeData = json.decode(response.body);
