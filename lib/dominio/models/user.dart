@@ -6,6 +6,7 @@ class User {
   int id;
   DateTime birthdate;
   List<String> address;
+  String? personProfilePhoto;
 
   User({
     required this.name,
@@ -13,6 +14,7 @@ class User {
     required this.id,
     required this.birthdate,
     required this.address,
+    this.personProfilePhoto,
   });
 
   User copyWith({
