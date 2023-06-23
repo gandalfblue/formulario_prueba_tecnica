@@ -1,13 +1,13 @@
 import 'dart:convert';
 
-class User {
+class FormularioModel {
   String name;
   String lastName;
   int id;
   DateTime birthdate;
   List<String> address;
 
-  User({
+  FormularioModel({
     required this.name,
     required this.lastName,
     required this.id,
@@ -15,14 +15,14 @@ class User {
     required this.address,
   });
 
-  User copyWith({
+  FormularioModel copyWith({
     String? name,
     String? lastName,
     int? id,
     DateTime? birthdate,
     List<String>? address,
   }) =>
-      User(
+      FormularioModel(
         name: name ?? this.name,
         lastName: lastName ?? this.lastName,
         id: id ?? this.id,
@@ -30,11 +30,12 @@ class User {
         address: address ?? this.address,
       );
 
-  factory User.fromJson(String str) => User.fromMap(json.decode(str));
+  factory FormularioModel.fromJson(String str) =>
+      FormularioModel.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory User.fromMap(Map<String, dynamic> json) => User(
+  factory FormularioModel.fromMap(Map<String, dynamic> json) => FormularioModel(
         name: json["name"],
         lastName: json["lastName"],
         id: json["id"],
