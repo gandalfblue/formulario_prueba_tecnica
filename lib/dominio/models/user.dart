@@ -3,7 +3,7 @@ import 'dart:convert';
 class UserModel {
   String name;
   String lastName;
-  int? id;
+  String? id;
   DateTime birthdate;
   List<String> address;
   String? personProfilePhoto;
@@ -20,7 +20,7 @@ class UserModel {
   UserModel copyWith({
     String? name,
     String? lastName,
-    int? id,
+    String? id,
     DateTime? birthdate,
     List<String>? address,
   }) =>

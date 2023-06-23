@@ -14,34 +14,32 @@ class CalendarState extends ConsumerState<Calendar> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text("Calendar"),
-            const SizedBox(height: 5),
-            Text(_dateTime == null
-                ? 'Nothing has been picked yet'
-                : _dateTime.toString()),
-            ElevatedButton(
-              child: const Text('Pick a date'),
-              onPressed: () {
-                showDatePicker(
-                        context: context,
-                        initialDate: _dateTime ?? DateTime.now(),
-                        firstDate: DateTime(2000),
-                        lastDate: DateTime(2023))
-                    .then((date) {
-                  setState(() {
-                    _dateTime = date;
-                    ref.read(formProvider.notifier).updateBirthdate(_dateTime!);
-                  });
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          const Text("Calendar"),
+          const SizedBox(height: 5),
+          Text(_dateTime == null
+              ? 'Nothing has been picked yet'
+              : _dateTime.toString()),
+          ElevatedButton(
+            child: const Text('Pick a date'),
+            onPressed: () {
+              showDatePicker(
+                      context: context,
+                      initialDate: _dateTime ?? DateTime.now(),
+                      firstDate: DateTime(2000),
+                      lastDate: DateTime(2023))
+                  .then((date) {
+                setState(() {
+                  _dateTime = date;
+                  ref.read(formProvider.notifier).updateBirthdate(_dateTime!);
                 });
-              },
-            )
-          ],
-        ),
+              });
+            },
+          )
+        ],
       ),
     );
   }
