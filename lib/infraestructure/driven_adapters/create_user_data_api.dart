@@ -17,9 +17,9 @@ class CreateUserDataApi extends CreateUserDataGateway {
     const storage = FlutterSecureStorage();
     String token = await storage.read(key: 'token') ?? '';
 
-    final url =
-        Uri.https(Enviroment.baseUrl, 'userdata/$token.json', {'auth': token});
-    final response = await http.put(url, body: user.toJson());
+    final url = Uri.https(Enviroment.baseUrl, 'userdata/$token.json', {'auth': token});
+
+    final response = await http.post(url, body: user.toJson());
 
     if (response.statusCode == 200) {
       return;

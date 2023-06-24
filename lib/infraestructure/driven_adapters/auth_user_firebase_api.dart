@@ -23,8 +23,8 @@ class AuthUserFirebaseApi {
 
     final Map<String, dynamic> decodedResp = json.decode(response.body);
 
-    if (decodedResp.containsKey('idToken')) {
-      await storage.write(key: 'token', value: decodedResp['idToken']);
+    if (decodedResp.containsKey('localId')) {
+      await storage.write(key: 'token', value: decodedResp['localId']);
       await storage.write(key: 'email', value: decodedResp['email']);
       return response.statusCode;
     } else {

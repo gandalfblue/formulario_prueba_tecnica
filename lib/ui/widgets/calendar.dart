@@ -15,8 +15,7 @@ class CalendarState extends ConsumerState<Calendar> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
+    return Center(
         child: Row(
           children: [
             Expanded(
@@ -37,7 +36,6 @@ class CalendarState extends ConsumerState<Calendar> {
             ),
           ],
         ),
-      ),
     );
   }
 }

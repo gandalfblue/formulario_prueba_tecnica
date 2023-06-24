@@ -17,7 +17,7 @@ class FormularioPruebaTecnicaFlutterApp extends ConsumerWidget {
       theme: ThemeData.dark().copyWith(
         appBarTheme: const AppBarTheme(color: Colors.blueAccent),
       ),
-      initialRoute: AppRoutes.formulario,
+      initialRoute: AppRoutes.listUserPage,
       onGenerateRoute: (routeSetting) {
         switch (routeSetting.name) {
           case (AppRoutes.formulario):

@@ -23,8 +23,13 @@ class GetUserDataApi extends GetUserDataGateway {
     final response = await http.get(url);
 
     if (response.statusCode == 200) {
-      UserModel userData = UserModel.fromJson(response.body);
-      userModels.add(userData);
+      final Map<String, dynamic> decodeData = json.decode(response.body);
+
+      decodeData.forEach((key, value) {
+        UserModel userData = UserModel.fromMap(value);
+        userModels.add(userData);
+      });
+
       return userModels;
     } else {
       final decodeData = json.decode(response.body);
