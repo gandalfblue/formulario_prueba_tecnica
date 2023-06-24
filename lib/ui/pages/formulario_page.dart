@@ -3,17 +3,21 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:formulario_prueba_tecnica/config/providers/create_user_data_provider.dart';
 import 'package:formulario_prueba_tecnica/dominio/models/user.dart';
+import 'package:formulario_prueba_tecnica/ui/widgets/appbar.dart';
 import 'package:formulario_prueba_tecnica/ui/widgets/calendar.dart';
+import 'package:formulario_prueba_tecnica/ui/widgets/drawer.dart';
 
 class FormularioPage extends ConsumerWidget {
+  final Future<List<UserModel>> userModels;
   late UserModel userModel;
+
+  FormularioPage(this.userModels, {super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Form application'),
-      ),
+      appBar: AppBarWidget.costomAppBar(context, 'Form'),
+      drawer: DrawerWidget(userModels: userModels),
       body: Form(
         child: ListView(
           padding: const EdgeInsets.all(16.0),

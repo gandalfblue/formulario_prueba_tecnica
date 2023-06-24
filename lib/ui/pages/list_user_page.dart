@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import 'package:formulario_prueba_tecnica/dominio/models/user.dart';
+import 'package:formulario_prueba_tecnica/ui/widgets/appbar.dart';
+import 'package:formulario_prueba_tecnica/ui/widgets/drawer.dart';
 import 'package:formulario_prueba_tecnica/ui/widgets/list_users_widget.dart';
 
 class ListUserPage extends StatelessWidget {
@@ -15,7 +17,8 @@ class ListUserPage extends StatelessWidget {
     return GestureDetector(
       onTap: () => FocusScope.of(context).requestFocus(),
       child: Scaffold(
-        appBar: costomAppBar(context),
+        appBar: AppBarWidget.costomAppBar(context, 'List Users'),
+        drawer: DrawerWidget(userModels: userModels),
         body: SafeArea(
           top: true,
           child: FutureBuilder<List<UserModel>>(
@@ -42,18 +45,6 @@ class ListUserPage extends StatelessWidget {
   AppBar costomAppBar(BuildContext context) {
     return AppBar(
       backgroundColor: Color(0xFF76B24E),
-      leading: InkWell(
-        splashColor: Colors.transparent,
-        focusColor: Colors.transparent,
-        hoverColor: Colors.transparent,
-        highlightColor: Colors.transparent,
-        onTap: () async {
-          Navigator.pop(context);
-        },
-        child: const Center(
-          child: Icon(Icons.arrow_back_ios),
-        ),
-      ),
       title: const Text("List Users"),
       titleTextStyle: const TextStyle(
         fontSize: 24,

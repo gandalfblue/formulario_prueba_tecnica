@@ -37,10 +37,10 @@ class UserModel {
   String toJson() => json.encode(toMap());
 
   factory UserModel.fromMap(Map<String, dynamic> json) => UserModel(
-        name: json["name"],
-        lastName: json["lastName"],
-        id: json["id"],
-        birthdate: json["birthdate"],
+        name: json["name"] ?? '',
+        lastName: json["lastName"] ?? '',
+        id: json["id"] ?? '',
+        birthdate: json["birthdate"] ?? '',
         address: List<String>.from(json["address"].map((x) => x)),
       );
 
