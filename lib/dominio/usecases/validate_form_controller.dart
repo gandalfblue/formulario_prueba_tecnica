@@ -2,11 +2,15 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:formulario_prueba_tecnica/dominio/models/gateway/create_user_gateway.dart';
 import 'package:formulario_prueba_tecnica/dominio/models/user.dart';
+import 'package:formulario_prueba_tecnica/dominio/usecases/create_user_data.dart';
+import 'package:formulario_prueba_tecnica/infraestructure/driven_adapters/errors/validate_form_error.dart';
 
 class FormControllerUseCase extends StateNotifier<UserModel> {
   final CreateUserDataGateway _createUserDataGateway;
+  final CreateUserDataUseCase _createUserDataUseCase;
 
-  FormControllerUseCase(this._createUserDataGateway)
+  FormControllerUseCase(
+      this._createUserDataGateway, this._createUserDataUseCase)
       : super(UserModel(
             id: '', name: '', lastName: '', birthdate: '', address: []));
 
@@ -52,14 +56,28 @@ class FormControllerUseCase extends StateNotifier<UserModel> {
     state.lastName = '';
     state.id = '';
     state.birthdate = '';
+    if (state.address.isEmpty) {
+      state.address.add('');
+    }
     state.address.clear();
-  }
-
-  Future<void> validateForm() async {
-    await _createUserDataGateway.validateForm(state);
   }
 
   Future<void> submitForm() async {
     await _createUserDataGateway.submitForm(state);
+    state.name = '';
+    state.lastName = '';
+    state.id = '';
+    state.birthdate = '';
+    state.address.clear();
+  }
+
+  bool verifyFieldVoid() {
+    if (state.lastName.isNotEmpty ||
+        state.name.isNotEmpty ||
+        state.birthdate.isNotEmpty ||
+        state.address.isNotEmpty) {
+      return true;
+    }
+    return false;
   }
 }

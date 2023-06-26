@@ -6,10 +6,10 @@ class ValidationFormException implements Exception {
   factory ValidationFormException.fromException(
       ValidationFormException exception) {
     switch (exception.message) {
-      case "name-isEmpty":
-        return ValidationFormException("The Name field is required.");
-      case "lastname-isEmpty":
-        return ValidationFormException("The Last Name field is required.");
+      case "error-isEmpty":
+        return ValidationFormException("The field is required.");
+      case "error-isNumber":
+        return ValidationFormException("The field required is to String.");
       case "birthdate-isEmpty":
         return ValidationFormException("The Date of Birth field is required.");
       case "address-isEmpty":

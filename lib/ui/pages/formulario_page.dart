@@ -35,27 +35,51 @@ class FormularioPageState extends ConsumerState<FormularioPage> {
           children: [
             const SizedBox(height: 20),
             TextFormField(
+              keyboardType: TextInputType.text,
               onChanged: (value) =>
                   ref.read(formProvider.notifier).updateName(value),
               decoration: const InputDecoration(labelText: 'Name'),
+              validator: (value) {
+                return (value != null && value.length >= 3)
+                    ? null
+                    : 'Ehe field is required and must be longer than 3 letters ';
+              },
             ),
             const SizedBox(height: 20),
             TextFormField(
+              keyboardType: TextInputType.text,
               onChanged: (value) =>
                   ref.read(formProvider.notifier).updateLastName(value),
               decoration: const InputDecoration(labelText: 'Lastname'),
+              validator: (value) {
+                return (value != null && value.length >= 6)
+                    ? null
+                    : 'the field is required and must be longer than 6 letters';
+              },
             ),
             const SizedBox(height: 20),
             TextFormField(
+              keyboardType: TextInputType.number,
               onChanged: (value) =>
-                  ref.read(formProvider.notifier).updateId(value),
+                  ref.read(formProvider.notifier).updateId(value.toString()),
               decoration: const InputDecoration(labelText: 'DNI'),
+              validator: (value) {
+                return (value != null && value.length >= 8)
+                    ? null
+                    : 'the field is required and must be longer than 8 letters';
+              },
             ),
             const SizedBox(height: 20),
             TextFormField(
+              keyboardType: TextInputType.streetAddress,
               onChanged: (value) =>
                   ref.read(formProvider.notifier).addAddress(value),
               decoration: const InputDecoration(labelText: 'Address'),
+              validator: (value) {
+                return (value != null && value.length >= 15)
+                    ? null
+                    : 'the field is required and must be longer than 15 letters';
+              },
             ),
             const SizedBox(height: 20),
             TextFormField(
@@ -75,30 +99,19 @@ class FormularioPageState extends ConsumerState<FormularioPage> {
                   icon: const Icon(Icons.calendar_month_outlined),
                 ),
               ),
+              validator: (value) {
+                return (value != null) ? null : 'the field is required';
+              },
             ),
             const SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ElevatedButton(
-                  onPressed: () {
-                    ref.read(formProvider.notifier).submitForm();
-                    ref.read(formProvider.notifier).clearAllData();
-                  },
-                  child: const Text('Clear all data'),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.red,
-                  ),
-                ),
-                const SizedBox(width: 20),
-                ElevatedButton(
-                  onPressed: () {
-                    ref.read(formProvider.notifier).clearAllData();
-                  },
-                  child: const Text('Submitted'),
-                ),
-              ],
-            )
+            ElevatedButton(
+              onPressed: ref.read(formProvider.notifier).verifyFieldVoid()
+                  ? () {
+                      ref.read(formProvider.notifier).submitForm();
+                    }
+                  : null,
+              child: const Text('Submitted'),
+            ),
           ],
         ),
       ),
