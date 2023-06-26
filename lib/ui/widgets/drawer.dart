@@ -21,7 +21,7 @@ class DrawerWidget extends StatelessWidget {
             leading: const Icon(Icons.person_add),
             title: const Text('Form'),
             onTap: () {
-              Navigator.pushReplacementNamed(context, AppRoutes.formulario,
+              Navigator.pushReplacementNamed(context, AppRoutes.formularioPage,
                   arguments: userModels);
             },
           ),

@@ -33,7 +33,8 @@ class ListUsersWidget extends StatelessWidget {
                   hoverColor: Colors.transparent,
                   highlightColor: Colors.transparent,
                   onTap: () async {
-                    Navigator.of(context).pushNamed(AppRoutes.home);
+                    Navigator.pushNamed(context, AppRoutes.detailsUserPage,
+                        arguments: user);
                   },
                   child: cardDetailListUser(user: user),
                 ),

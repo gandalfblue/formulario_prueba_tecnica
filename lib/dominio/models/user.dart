@@ -41,7 +41,7 @@ class UserModel {
         lastName: json["lastName"] ?? '',
         id: json["id"] ?? '',
         birthdate: json["birthdate"] ?? '',
-        address: List<String>.from(json["address"].map((x) => x)),
+        address: List<String>.from(json["address"].map((x) => x) ?? []),
       );
 
   Map<String, dynamic> toMap() => {
