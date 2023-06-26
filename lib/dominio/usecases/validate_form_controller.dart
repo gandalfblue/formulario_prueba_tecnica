@@ -26,6 +26,15 @@ class FormControllerUseCase extends StateNotifier<UserModel> {
     state = state.copyWith(birthdate: value);
   }
 
+  String getBirthdate() {
+    String birthdate = state.birthdate;
+    if (birthdate.isEmpty) {
+      return '';
+    }
+    print(birthdate);
+    return birthdate;
+  }
+
   void addAddress(String address) {
     final updatedAddresses = List<String>.from(state.address);
     updatedAddresses.add(address);
@@ -36,6 +45,14 @@ class FormControllerUseCase extends StateNotifier<UserModel> {
     final updatedAddresses = List<String>.from(state.address);
     updatedAddresses.removeAt(index);
     state = state.copyWith(address: updatedAddresses);
+  }
+
+  void clearAllData() {
+    state.name = '';
+    state.lastName = '';
+    state.id = '';
+    state.birthdate = '';
+    state.address.clear();
   }
 
   Future<void> validateForm() async {
