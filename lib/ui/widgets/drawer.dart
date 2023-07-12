@@ -11,9 +11,12 @@ class DrawerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
+      width: MediaQuery.of(context).size.width / 2,
       child: Column(
         children: [
           const UserAccountsDrawerHeader(
+            decoration:
+                BoxDecoration(color: Color.fromARGB(255, 103, 174, 241)),
             accountName: Text('Qwerty'),
             accountEmail: Text(Enviroment.email),
           ),

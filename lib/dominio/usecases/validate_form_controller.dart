@@ -2,15 +2,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:formulario_prueba_tecnica/dominio/models/gateway/create_user_gateway.dart';
 import 'package:formulario_prueba_tecnica/dominio/models/user.dart';
-import 'package:formulario_prueba_tecnica/dominio/usecases/create_user_data.dart';
-import 'package:formulario_prueba_tecnica/infraestructure/driven_adapters/errors/validate_form_error.dart';
 
 class FormControllerUseCase extends StateNotifier<UserModel> {
   final CreateUserDataGateway _createUserDataGateway;
-  final CreateUserDataUseCase _createUserDataUseCase;
 
-  FormControllerUseCase(
-      this._createUserDataGateway, this._createUserDataUseCase)
+  FormControllerUseCase(this._createUserDataGateway)
       : super(UserModel(
             id: '', name: '', lastName: '', birthdate: '', address: []));
 
@@ -30,16 +26,18 @@ class FormControllerUseCase extends StateNotifier<UserModel> {
     state = state.copyWith(birthdate: value);
   }
 
-  String getBirthdate() {
-    String birthdate = state.birthdate;
-    if (birthdate.isEmpty) {
-      return '';
+  void addAddress() {
+    final updatedAddresses = List<String>.from(state.address);
+    if (updatedAddresses.isEmpty) {
+      updatedAddresses.add('');
+      updatedAddresses.add('');
+    } else {
+      updatedAddresses.add('');
     }
-    print(birthdate);
-    return birthdate;
+    state = state.copyWith(address: updatedAddresses);
   }
 
-  void addAddress(String address) {
+  void updateAddress(String address) {
     final updatedAddresses = List<String>.from(state.address);
     updatedAddresses.add(address);
     state = state.copyWith(address: updatedAddresses);
@@ -56,25 +54,27 @@ class FormControllerUseCase extends StateNotifier<UserModel> {
     state.lastName = '';
     state.id = '';
     state.birthdate = '';
-    if (state.address.isEmpty) {
-      state.address.add('');
-    }
     state.address.clear();
+  }
+
+  UserModel getDataUser() {
+    // if (state.birthdate.isEmpty) {
+    //   List<String> date = DateTime.now().toString().split(' ');
+    //   state.birthdate = date[0];
+    // }
+    return state;
   }
 
   Future<void> submitForm() async {
     await _createUserDataGateway.submitForm(state);
-    state.name = '';
-    state.lastName = '';
-    state.id = '';
-    state.birthdate = '';
-    state.address.clear();
+    clearAllData();
   }
 
   bool verifyFieldVoid() {
-    if (state.lastName.isNotEmpty ||
-        state.name.isNotEmpty ||
-        state.birthdate.isNotEmpty ||
+    if (state.lastName.length >= 6 &&
+        state.name.length >= 5 &&
+        state.birthdate.isNotEmpty &&
+        state.id!.length >= 8 &&
         state.address.isNotEmpty) {
       return true;
     }
