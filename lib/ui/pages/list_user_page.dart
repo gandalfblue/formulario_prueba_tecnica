@@ -41,17 +41,4 @@ class ListUserPage extends StatelessWidget {
       ),
     );
   }
-
-  AppBar costomAppBar(BuildContext context) {
-    return AppBar(
-      backgroundColor: Color(0xFF76B24E),
-      title: const Text("List Users"),
-      titleTextStyle: const TextStyle(
-        fontSize: 24,
-        fontWeight: FontWeight.w700,
-      ),
-      centerTitle: true,
-      elevation: 4,
-    );
-  }
 }

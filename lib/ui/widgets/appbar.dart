@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 mixin AppBarWidget {
   static AppBar costomAppBar(BuildContext context, String title) {
     return AppBar(
-      backgroundColor: Color(0xFF76B24E),
+      backgroundColor: const Color(0xFF76B24E),
       title: const Text("List Users"),
       titleTextStyle: const TextStyle(
         fontSize: 24,

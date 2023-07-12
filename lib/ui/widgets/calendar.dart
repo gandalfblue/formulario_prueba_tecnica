@@ -5,8 +5,9 @@ import 'package:formulario_prueba_tecnica/config/providers/create_user_data_prov
 
 class CalendarWidget extends ConsumerWidget {
   final BuildContext context;
+  final TextEditingController dateEditingController;
 
-  CalendarWidget(this.context);
+  const CalendarWidget(this.context, this.dateEditingController, {super.key});
 
   @override
   Widget build(context, WidgetRef ref) {
@@ -26,6 +27,8 @@ class CalendarWidget extends ConsumerWidget {
           onSubmit: (value) {
             List<String> date = value.toString().split(' ');
             ref.read(formProvider.notifier).updateBirthdate(date[0]);
+            dateEditingController.text =
+                ref.read(formProvider.notifier).getDataUser().birthdate;
             Navigator.of(context).pop();
           },
         ),
